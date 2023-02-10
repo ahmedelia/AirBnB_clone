@@ -13,19 +13,23 @@ class FileStorage():
     __objects = {}
 
     def all(self):
-        return __objects
+        """return all objects"""
+        return FileStorage.__objects
 
     def new(self, obj):
-        key = str(obj.__dict__["__class__"] + obj.__dict__["id"])
-        __objects[key] = obj
+        """add object to list of objects"""
+        key = str(obj.__class__.__name__) + '.' + str(obj.__dict__["id"])
+        FileStorage.__objects[key] = obj.to_dict()
 
     def save(self):
-        with open(__file_path, 'w', encoding="utf-8") as f:
-            return json.dump(__objects, f)
+        """save all data to file"""
+        with open(FileStorage.__file_path, 'w', encoding="utf-8") as f:
+            json.dump(FileStorage.__objects, f)
 
     def reload(self):
+        """reload data from file"""
         try:
-            with open(__file_path, 'r', encoding="utf-8") as f:
-                __objects = json.load(f)
+            with open(FileStorage.__file_path, 'r', encoding="utf-8") as f:
+                FileStorage.__objects = json.load(f)
         except Exception:
             return

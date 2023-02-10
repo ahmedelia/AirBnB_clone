@@ -4,7 +4,9 @@
     base class of all classes
     in airbnb project
 """
-
+# import sys
+# sys.path.append(
+#    "/home/yuu/AirBnB_clone/")
 import uuid
 import datetime
 from models import storage
