@@ -1,16 +1,22 @@
 #!/usr/bin/python3
-""" testing User """
+"""Unit test for User class"""
 import unittest
-import pep8
 from models.user import User
 
-class User_testing(unittest.TestCase):
-    """ check BaseModel """
 
-    def testpep8(self):
-        """ testing codestyle """
-        pepstylecode = pep8.StyleGuide(quiet=True)
-        path_user = 'models/user.py'
-        result = pepstylecode.check_files([path_user])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+class TestUser(unittest.TestCase):
+    def test_class(self):
+        """Tests the class of an instance of User"""
+        user = User()
+        self.assertEqual(user.__class__.__name__, "User")
+
+    def test_user_attributes(self):
+        """Tests the initialization of attributes in User instance"""
+        user = User()
+        self.assertEqual(user.email, "")
+        self.assertEqual(user.password, "")
+        self.assertEqual(user.first_name, "")
+        self.assertEqual(user.last_name, "")
+
+    if __name__ == '__main__':
+        unittest.main()

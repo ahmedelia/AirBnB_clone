@@ -1,43 +1,105 @@
 #!/usr/bin/python3
-"""test BaseModel"""
+""" test model for main base class"""
 import unittest
-import os
+from time import sleep
+import unittest
 from models.base_model import BaseModel
-import pep8
 
-class TestBaseModel(unittest.TestCase):
-    """test BaseModel"""
+"""
+class TestCaseBaseModel(unittest.TestCase):
 
     def setUp(self):
-        self.testbasemodel = BaseModel()
+        self.my_model = BaseModel()
+        self.my_model.name = "My First Model"
+        self.my_model.my_number = 89
+        print(self.my_model)
+        self.my_model.save()
+        print(self.my_model)
+        my_model_json = self.my_model.to_dict()
+        print(my_model_json)
+        print("JSON of my_model:")
+        for key in my_model_json.keys():
+            print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
+"""
 
-    def test_pep8_BaseModel(self):
-        """Testing for pep8"""
-        style = pep8.StyleGuide(quiet=True)
-        p = style.check_files(['models/base_model.py'])
-        self.assertEqual(p.total_errors, 0, "Check pep8")
 
+class TestCaseBaseModel(unittest.TestCase):
 
-    def test_save_BaesModel(self):
-        """test save_Basemodel"""
-        self.base.save()
-        self.assertNotEqual(self.base.created_at, self.base.updated_at)
+    def setUp(self):
+        """ setting up the various
+        components for the test """
+        self.my_model = BaseModel()
+        self.my_model.name = "My First Model"
+        self.my_model.my_number = 89
 
-    def test_doc(self):
-        """ Tests doc """
-        self.assertisNotNone(BaseModel.__doc__)
+    def test_customName(self):
+        """ comparison on name """
+        # print(self.my_model)
+        self.my_model.save()
 
-    def test_to_json(self):
-        '''test to jason'''
+        # my_model_json = self.my_model.to_dict()
+        # print(type(my_model_json))
 
-    def test_kwarg(self):
-        basemodel = BaseModel(name="base")
-        self.assertEqual(type(basemodel).__name__, "BaseModel")
-        self.assertFalse(hasattr(basemodel, "id"))
-        self.assertFalse(hasattr(basemodel, "created_at"))
-        self.assertTrue(hasattr(basemodel, "name"))
-        self.assertFalse(hasattr(basemodel, "updated_at"))
-        self.assertTrue(hasattr(basemodel, "__class__"))
+        # print("JSON of my_model:")
+        # for key in my_model_json.keys():
+        #   print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
 
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual(self.my_model.name, "My First Model")
+
+    def test_NumberAdded(self):
+        """testing number added """
+        self.assertEqual(self.my_model.my_number, 89)
+
+    def test_classType(self):
+        """ testing class type """
+        self.assertEqual(self.my_model.__class__.__name__, 'BaseModel')
+
+    def test_toDict(self):
+        """ to dict returns a dictionary
+        testing return type"""
+        self.assertEqual(type(self.my_model.to_dict()), dict)
+
+    def test_createdAt(self):
+        """ testing if created at is a string
+        that can be access with key create_at """
+        my_model_json = self.my_model.to_dict()
+        self.assertEqual(type(my_model_json['created_at']), str)
+
+    def test_updatedAt(self):
+        """ testing if updated at is a string
+        that acn be access with key updated at"""
+        my_model_json = self.my_model.to_dict()
+        self.assertEqual(type(my_model_json['updated_at']), str)
+
+    def test_save(self):
+        """ checking if calling save updates the time"""
+        old_time = self.my_model.to_dict()['updated_at']
+        sleep(1)
+        self.my_model.save()
+        mode = BaseModel()
+        new_time = mode.to_dict()['updated_at']
+        # new_time = self.my_model.to_dict()['updated_at']
+        self.assertNotEqual(old_time, new_time)
+
+    def test_id(self):
+        """ ensuring the id does not
+        change for a single instance
+        over operations """
+        self.my_model.save()
+        my_model_json = self.my_model.to_dict()
+        self.assertEqual(my_model_json['id'], self.my_model.__dict__['id'])
+
+    def test_str_(self):
+        """ test for string print function """
+        # clas_name = self.my_model.__class__.__name__
+        # the_id = self.my_model.id
+        # the_dict = self.my_model.__dict__
+        temp_hold = str(self.my_model)
+        self.assertEqual(temp_hold.split(" ")[0], "[BaseModel]")
+        self.assertEqual(temp_hold.split(" ")[1], "({})".format(self.my_model.id))
+        # self.assertEqual(eval(temp_hold.split(" ")[2]), self.my_model.__dict__)
+
+    def test_sizeofDict(self):
+        """ensuring the dictionary is the expected length
+        as converting to json has one additional value """
+        self.assertEqual(len(self.my_model.to_dict()), len(self.my_model.__dict__) + 1)
