@@ -2,6 +2,8 @@
 """Entry point of the command interpreter"""
 import cmd
 from models.base_model import BaseModel
+from models.user import User
+
 import ast
 from models import storage
 
@@ -10,7 +12,8 @@ class HBNBCommand(cmd.Cmd):
     """HBNBCommand"""
     prompt = "(hbnb) "
     classes = {
-        'BaseModel': BaseModel
+        'BaseModel': BaseModel,
+        'User': User
     }
 
     def do_quit(self, line):
