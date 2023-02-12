@@ -7,7 +7,7 @@ from .base_model import BaseModel
 
 
 class State(BaseModel):
-    """State Class"""
+    """State Class to store state of curr """
     name = ""
 
     def __init__(self, *args, **kwargs):

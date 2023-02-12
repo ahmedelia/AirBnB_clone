@@ -7,7 +7,7 @@ from .base_model import BaseModel
 
 
 class City(BaseModel):
-    """City Class"""
+    """City Class to store all cities in proj"""
     name = ""
     state_id = ""
 

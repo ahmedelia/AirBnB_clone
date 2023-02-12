@@ -7,7 +7,7 @@ from .base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """Amenity Class"""
+    """Amenity Class for all amenity in proj"""
     name = ""
 
     def __init__(self, *args, **kwargs):

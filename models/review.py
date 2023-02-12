@@ -7,7 +7,7 @@ from .base_model import BaseModel
 
 
 class Review(BaseModel):
-    """Review Class"""
+    """Review Class store all # REVIEWs in proj """
     place_id = ""
     user_id = ""
     text = ""

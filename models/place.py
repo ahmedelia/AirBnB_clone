@@ -7,7 +7,7 @@ from .base_model import BaseModel
 
 
 class Place(BaseModel):
-    """Place Class"""
+    """Place Class that conatin description and name and etc for proj """
     name = ""
     user_id = ""
     city_id = ""
