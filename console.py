@@ -68,6 +68,7 @@ class HBNBCommand(cmd.Cmd):
             objects = storage.all()
             if key in objects:
                 storage.delete(key)
+                storage.save()
             else:
                 print("** no instance found **")
 
@@ -119,6 +120,7 @@ class HBNBCommand(cmd.Cmd):
                 pass
             setattr(obj, line[2], line[3])
             storage.new(obj)
+            storage.save()
 
     def emptyline(self):
         """EmptyLIne"""
@@ -127,4 +129,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
-    storage.save()
