@@ -26,6 +26,10 @@ class FileStorage():
         with open(FileStorage.__file_path, 'w', encoding="utf-8") as f:
             json.dump(FileStorage.__objects, f)
 
+    def delete(self, key):
+        """Delete object from objects"""
+        del FileStorage.__objects[key]
+
     def reload(self):
         """reload data from file"""
         try:
