@@ -97,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
         """
         line = line.split(" ")
         objects = storage.all()
-        if line[0] == " ":
+        if line[0] == "":
             print("** class name missing **")
         elif line[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
