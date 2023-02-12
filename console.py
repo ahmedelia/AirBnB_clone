@@ -120,6 +120,10 @@ class HBNBCommand(cmd.Cmd):
             setattr(obj, line[2], line[3])
             storage.new(obj)
 
+    def emptyline(self):
+        """EmptyLIne"""
+        pass
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
