@@ -150,7 +150,7 @@ class HBNBCommand(cmd.Cmd):
         if clss not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        if command == 'all':
+        if command == 'show':
             self.do_all(clss)
         elif command == 'count':
             cnt = 0
