@@ -140,6 +140,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def default(self, line):
+        """Default method """
         line = line.split('.')
         if len(line) == 1:
             print("*** Unknown syntax: {}".format(line))
@@ -150,8 +151,15 @@ class HBNBCommand(cmd.Cmd):
         if clss not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        if command == 'show':
+        if command == 'all':
             self.do_all(clss)
+
+        elif command == 'show':
+            if line[-1][:-1] == "":
+                print("** instance id missing **")
+            else:
+                self.do_show(clss + " " + str(line[-1][:-1]))
+
         elif command == 'count':
             cnt = 0
             objects = storage.all()
