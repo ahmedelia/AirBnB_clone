@@ -7,7 +7,9 @@ from .base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """Amenity Class for all amenity in proj"""
+    """Amenity Class for all amenity in proj
+    just text to check if the comments is the prob
+    """
     name = ""
 
     def __init__(self, *args, **kwargs):

@@ -7,7 +7,9 @@ from .base_model import BaseModel
 
 
 class User(BaseModel):
-    """User Class thats contain email and password and names"""
+    """User Class thats contain email and password and names
+    just text to check if the comments is the prob
+    """
     email = ""
     password = ""
     first_name = ""

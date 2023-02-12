@@ -7,7 +7,9 @@ from .base_model import BaseModel
 
 
 class Review(BaseModel):
-    """Review Class store all # REVIEWs in proj """
+    """Review Class store all # REVIEWs in proj
+    just text to check if the comments is the prob
+    """
     place_id = ""
     user_id = ""
     text = ""

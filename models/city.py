@@ -7,7 +7,9 @@ from .base_model import BaseModel
 
 
 class City(BaseModel):
-    """City Class to store all cities in proj"""
+    """City Class to store all cities in proj
+    just text to check if the comments is the prob
+    """
     name = ""
     state_id = ""
 

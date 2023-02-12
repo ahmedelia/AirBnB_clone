@@ -7,7 +7,9 @@ from .base_model import BaseModel
 
 
 class Place(BaseModel):
-    """Place Class that conatin description and name and etc for proj """
+    """Place Class that conatin description and name and etc for proj
+    just text to check if the comments is the prob
+    """
     name = ""
     user_id = ""
     city_id = ""
