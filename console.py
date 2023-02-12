@@ -139,6 +139,33 @@ class HBNBCommand(cmd.Cmd):
         """EmptyLIne"""
         pass
 
+    def default(self, line):
+        line = line.split('.')
+        if len(line) == 1:
+            print("*** Unknown syntax: {}".format(line))
+            return
+        clss = line[0]
+        line = line[1].split('(')
+        command = line[0]
+        if clss not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+        if command == 'all':
+            self.do_all(clss)
+        elif command == 'count':
+            cnt = 0
+            objects = storage.all()
+            for key in objects.keys():
+                k = key.split('.')[0]
+                if k == clss:
+                    cnt = cnt + 1
+            print(cnt)
+        elif command == "destroy":
+            if line[-1][:-1] == "":
+                print("** instance id missing **")
+            else:
+                self.do_destroy(clss + " " + str(line[-1][:-1]))
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

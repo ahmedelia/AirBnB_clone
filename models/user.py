@@ -16,4 +16,5 @@ class User(BaseModel):
     last_name = ""
 
     def __init__(self, *args, **kwargs):
+        """ Set up an instance with its properties. """
         super().__init__(*args, **kwargs)
