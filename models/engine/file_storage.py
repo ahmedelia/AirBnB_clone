@@ -18,7 +18,7 @@ class FileStorage():
 
     def new(self, obj):
         """add object to list of objects"""
-        key = str(obj.__class__.__name__) + '.' + str(obj.__dict__["id"])
+        key = str(obj.__class__.__name__) + '.' + str(obj.id)
         FileStorage.__objects[key] = obj.to_dict()
 
     def save(self):
