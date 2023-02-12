@@ -9,7 +9,7 @@ from .base_model import BaseModel
 class Place(BaseModel):
     """Place Class"""
     name = ""
-    state_id = ""
+    user_id = ""
     city_id = ""
     description = ""
     number_rooms = 0

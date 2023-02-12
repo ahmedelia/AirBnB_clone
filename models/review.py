@@ -9,7 +9,7 @@ from .base_model import BaseModel
 class Review(BaseModel):
     """Review Class"""
     place_id = ""
-    state_id = ""
+    user_id = ""
     text = ""
 
     def __init__(self, *args, **kwargs):
