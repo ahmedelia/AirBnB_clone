@@ -1,0 +1,58 @@
+border: 1px solid #DDDDDD;
+border-radius: 4px;
+<div class="filters-list">
+        <ul class="locations-list">
+                <li>Arizona</li>
+                <ul>
+                        <li>page1</li>
+                        <li>page2</li>
+                </ul>
+                <li>California</li>
+                <ul>
+                        <li>page1</li>
+                        <li>page2</li>
+                </ul>
+        </ul>
+        <ul class="amenities-list">
+                <li>Ketchin</li>
+                <ul>
+                        <li>page1</li>
+                        <li>page2</li>
+                </ul>
+                <li>internet</li>
+                <ul>
+                        <li>page1</li>
+                        <li>page2</li>
+                </ul>
+        </ul>
+</div>
+
+/*lists*/
+ .filters-list{
+         display: flex;
+         /*flex-direction: row-reverse;*/
+         justify-content: space-between;
+         background-color: white;
+         border:1px solid #DDDDDD;
+         border-radius: 4px;
+         padding-right: 30px;
+         padding-left: 30px;
+         width: 60vw;
+ }
+.tst-clss{
+        display: flex;
+        width: 40%;
+        justify-content: space-between;
+}
+.locations-list, .amenities-list{
+        border: 1px solid #DDDDDD;
+        border-radius: 4px;
+}
+.amenities-list{
+        padding-left: 30px;
+}
+ul{
+        font-size: 18px;
+        list-style: none;
+        margin: 0;
+}

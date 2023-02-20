@@ -1,0 +1,20 @@
+.places{
+        padding: 10px;
+}
+.articles{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 60vw;
+
+}
+.article-mn{
+        border: 1px solid #FF5A5F;
+        border-radius: 4px;
+        text-align: center;
+        width: 285px;
+        padding: 10px;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+}
